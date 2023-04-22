@@ -1,8 +1,10 @@
 const express=require("express")
 const mongoose=require("mongoose")
 const {dbconfig}=require('./config/db.config')
-const app= express()
+
 require('dotenv').config()
+
+const app= express()
 
 app.use(express.json())
 
@@ -15,3 +17,4 @@ mongoose.connect(dbconfig).then(()=>{console.log('CONNECTED  TO DB')}).catch(con
 app.listen(process.env.PORT,()=>{
     console.log(`Server running on localhost:${process.env.PORT}`)
 })
+

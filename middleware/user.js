@@ -4,6 +4,7 @@ async function verifyToken(req,res,next){
     const token=req.headers['access-token']
     try{
         if(token){
+            const ans=jwt.decode()
             const verify= jwt.verify(token,process.env.SECRETKEY)
             if(verify){
                 req.userID=verify.id;
@@ -14,7 +15,7 @@ async function verifyToken(req,res,next){
             res.status(400).json({msg:"Bad request token missing or expired"})
         }
     }
-    catch{
+    catch(err){
         console.log(err)
         res.status(500).send({msg : 'Internal Server error'})
     }

@@ -40,9 +40,14 @@ async function signIn(req,res){
     }
     catch(err){
         console.log(err)
-        res.status(500).send({msg : 'Internal Server error'})
+        res.status(500).json({msg : 'Internal Server error'})
     }
 
 }
 
-module.exports={signUp,signIn}
+async function signOut(req, res){
+    // Delete the JWT token from the client-side storage
+    res.status(200).json({ message: 'Logout successful' });
+  }
+
+module.exports={signUp,signIn,signOut}
