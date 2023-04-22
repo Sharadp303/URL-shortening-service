@@ -7,10 +7,17 @@ async function signUp(req,res){
    try{
         const  {name,email,password}= req.body;
 
-        const result= await users.create({name:name,
-                                         email:email,
-                                         password:bcrypt.hashSync(password,8)})
-        res.status(201).json({message:"Signed Up successFully"})
+        let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+        const validpass=regex.test(password)
+        if(validpass){
+                    const result= await users.create({name:name,
+                        email:email,
+                        password:bcrypt.hashSync(password,8)                                 
+                    })
+            res.status(201).json({message:"Signed Up successFully"})
+        }else{
+            res.status(400).json({message:"Password : 1 lowercase, 1 uppercase, 1 special character"})
+        }    
     }
    catch(err){
         console.log(err)

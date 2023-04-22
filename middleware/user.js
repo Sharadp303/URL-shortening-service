@@ -4,7 +4,6 @@ async function verifyToken(req,res,next){
     const token=req.headers['access-token']
     try{
         if(token){
-            const ans=jwt.decode()
             const verify= jwt.verify(token,process.env.SECRETKEY)
             if(verify){
                 req.userID=verify.id;

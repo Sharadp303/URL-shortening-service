@@ -10,6 +10,7 @@ const userSchema= new mongoose.Schema({
         type:String,
         required:true,
         unique:true,
+        validate:/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
     },
     password:{
         type:String,
