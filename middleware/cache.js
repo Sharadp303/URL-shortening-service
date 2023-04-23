@@ -13,10 +13,10 @@ async function redisCache(req,res,next){
         //   console.log(keys)
 
         //FLUSH ALL KEYS
-        // const flushKey= await redisClient.FLUSHALL()
-        // console.log(flushKey)
+        const flushKey= await redisClient.FLUSHALL()
+        console.log(flushKey)
         
-        res.status(200).json(`localhost:5555/${check}`)
+        res.status(200).json(`13.233.78.29:5555/${check}`)
         return;
     }
     else{
