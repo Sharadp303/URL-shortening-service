@@ -26,7 +26,7 @@ async function shortUrl(req, res) {
       user.urls.push(createurl._id);
       user.save();
       
-      res.status(201).json(`localhost:5555/${shortID}`);
+      res.status(201).json(`http://13.233.78.29:5555${shortID}`);
     } 
     else {
       res.status(400).json({ msg: "Not a valid Url" });
