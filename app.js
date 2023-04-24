@@ -3,6 +3,7 @@ const mongoose=require("mongoose")
 const {dbconfig}=require('./config/db.config')
 
 require('dotenv').config()
+const PORT=process.env.PORT||3000;
 
 const app= express()
 
@@ -14,7 +15,7 @@ require('./routes/shorturl.routes')(app)
 mongoose.connect(dbconfig).then(()=>{console.log('CONNECTED  TO DB')}).catch(console.log())
 
 
-app.listen(process.env.PORT,()=>{
-    console.log(`Server running on localhost:${process.env.PORT}`)
+app.listen(PORT,()=>{
+    console.log(`Server running on localhost:${PORT}`)
 })
 
